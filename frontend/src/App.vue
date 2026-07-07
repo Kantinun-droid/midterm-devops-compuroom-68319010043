@@ -4,13 +4,6 @@ import { ref, onMounted } from 'vue'
 // อ่าน URL ของ backend จาก Environment Variables ห้าม hardcode
 const API_URL = import.meta.env.VITE_API_URL
 
-import { defineConfig } from 'vite'
-   import vue from '@vitejs/plugin-vue'
-
-   export default defineConfig({
-     plugins: [vue()],
-   })
-
 const computers = ref([])
 const loading = ref(false)
 const errorMsg = ref('')
