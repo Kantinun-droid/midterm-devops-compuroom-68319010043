@@ -1,4 +1,5 @@
-# TaskBoard — ระบบจัดการงาน
+ชื่อ: กันตินันท์ ทาแก้ว
+รหัส: 68319010043
 
 ![CI](https://github.com/Kantinun-droid/midterm-devops-compuroom-68319010043/.github/workflows/ci.yml/badge.svg)
 
@@ -25,7 +26,7 @@ docker compose up --build
 | Method | Path | คำอธิบาย |
 |--------|------|----------|
 | GET | /health | Health check |
-| GET | /api/compuroom | ดึงงานทั้งหมด |
-| POST | /api/compuroom | สร้างงานใหม่ |
-| PUT | /api/compuroom/:id | แก้ไขงาน |
-| DELETE | /api/compuroom/:id | ลบงาน |
+| GET | /api/computers | ดึงงานทั้งหมด |
+| POST | /api/computers | สร้างงานใหม่ |
+| PUT | /api/computers/:id | แก้ไขงาน |
+| DELETE | /api/computers/:id | ลบงาน |
