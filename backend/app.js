@@ -1,13 +1,21 @@
-// routes/computers.js
-// CRUD API ทั้ง 5 endpoint ตามข้อกำหนด Week 2
-// ใช้ Computer.findAll(), .create(), .update() แทนการเขียน SQL เอง
+// app.js
+// Express app เพียวๆ ไม่รวม logic การเชื่อมต่อ DB หรือ app.listen
+// แยกไว้แบบนี้เพื่อให้ไฟล์ test (Jest) import ไปใช้ได้โดยไม่ต้อง start server จริง
 
 const express = require('express');
-const router = express.Router();
-const Computer = require('../models/Computer');
+const cors = require('cors');
+const Computer = require('./models/Computer');
 
-// GET /api/computers - ดูรายการทั้งหมด
-router.get('/', async (req, res) => {
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', version: '1.0.0' });
+});
+
+app.get('/api/computers', async (req, res) => {
   try {
     const computers = await Computer.findAll();
     res.json(computers);
@@ -16,8 +24,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /api/computers/:id - ดูรายการเดียว
-router.get('/:id', async (req, res) => {
+app.get('/api/computers/:id', async (req, res) => {
   try {
     const computer = await Computer.findByPk(req.params.id);
     if (!computer) {
@@ -29,20 +36,14 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// POST /api/computers - เพิ่มเครื่องใหม่
-router.post('/', async (req, res) => {
+app.post('/api/computers', async (req, res) => {
   try {
     const { asset_code, brand_model, cpu, ram_gb, room, status } = req.body;
     if (!asset_code) {
       return res.status(400).json({ error: 'asset_code จำเป็นต้องระบุ' });
     }
     const newComputer = await Computer.create({
-      asset_code,
-      brand_model,
-      cpu,
-      ram_gb,
-      room,
-      status,
+      asset_code, brand_model, cpu, ram_gb, room, status,
     });
     res.status(201).json(newComputer);
   } catch (err) {
@@ -50,8 +51,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT /api/computers/:id - แก้ไขข้อมูลเครื่อง
-router.put('/:id', async (req, res) => {
+app.put('/api/computers/:id', async (req, res) => {
   try {
     const computer = await Computer.findByPk(req.params.id);
     if (!computer) {
@@ -64,8 +64,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE /api/computers/:id - ลบเครื่อง
-router.delete('/:id', async (req, res) => {
+app.delete('/api/computers/:id', async (req, res) => {
   try {
     const computer = await Computer.findByPk(req.params.id);
     if (!computer) {
@@ -78,4 +77,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = app;
