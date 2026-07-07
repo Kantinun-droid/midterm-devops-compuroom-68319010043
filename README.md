@@ -1,7 +1,7 @@
 ชื่อ: กันตินันท์ ทาแก้ว
 รหัส: 68319010043
 
-![CI](https://github.com/Kantinun-droid/midterm-devops-compuroom-68319010043/.github/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Kantinun-droid/midterm-devops-compuroom-68319010043/actions/workflows/ci.yml/badge.svg)
 
 ระบบ CRUD สำหรับจัดการงาน สร้างด้วย Express.js + PostgreSQL + Vue 3
 
