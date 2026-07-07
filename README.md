@@ -1,4 +1,5 @@
-# TaskBoard — ระบบจัดการงาน
+ชื่อ: กันตินันท์ ทาแก้ว
+รหัส: 68319010043
 
 ![CI](https://github.com/Kantinun-droid/midterm-devops-compuroom-68319010043/.github/workflows/ci.yml/badge.svg)
 
