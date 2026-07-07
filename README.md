@@ -2,6 +2,7 @@
 รหัส: 68319010043
 
 ![CI](https://github.com/Kantinun-droid/midterm-devops-compuroom-68319010043/actions/workflows/ci.yml/badge.svg)
+![CD](https://github.com/Kantinun-droid/midterm-devops-compuroom-68319010043/actions/workflows/cd.yml/badge.svg)
 
 ระบบ CRUD สำหรับจัดการงาน สร้างด้วย Express.js + PostgreSQL + Vue 3
 
