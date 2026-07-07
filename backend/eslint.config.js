@@ -1,3 +1,4 @@
+// eslint.config.js
 const js = require('@eslint/js');
 
 module.exports = [
@@ -19,5 +20,23 @@ module.exports = [
       'no-console': 'off',
     },
   },
-  { ignores: ['node_modules/**'] },
+  {
+    // globals เฉพาะไฟล์ test (Jest ใส่ describe/it/expect ฯลฯ ไว้แบบ global ตอนรัน)
+    files: ['tests/**/*.js', '**/*.test.js'],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        it: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+      },
+    },
+  },
+  {
+    ignores: ['node_modules/**'],
+  },
 ];
